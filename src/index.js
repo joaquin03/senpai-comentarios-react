@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Comentarios from './Comentarios';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Comentarios /> {/* Utilizo el componente */}
   </React.StrictMode>,
   document.getElementById('root')
 );
