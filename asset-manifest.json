@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/senpai-comentarios-react/static/css/main.ca9f1f74.chunk.css",
+    "main.js": "/senpai-comentarios-react/static/js/main.5e92efa7.chunk.js",
+    "main.js.map": "/senpai-comentarios-react/static/js/main.5e92efa7.chunk.js.map",
+    "runtime-main.js": "/senpai-comentarios-react/static/js/runtime-main.1adc113c.js",
+    "runtime-main.js.map": "/senpai-comentarios-react/static/js/runtime-main.1adc113c.js.map",
+    "static/js/2.0f78814c.chunk.js": "/senpai-comentarios-react/static/js/2.0f78814c.chunk.js",
+    "static/js/2.0f78814c.chunk.js.map": "/senpai-comentarios-react/static/js/2.0f78814c.chunk.js.map",
+    "static/js/3.c3bd867b.chunk.js": "/senpai-comentarios-react/static/js/3.c3bd867b.chunk.js",
+    "static/js/3.c3bd867b.chunk.js.map": "/senpai-comentarios-react/static/js/3.c3bd867b.chunk.js.map",
+    "index.html": "/senpai-comentarios-react/index.html",
+    "static/css/main.ca9f1f74.chunk.css.map": "/senpai-comentarios-react/static/css/main.ca9f1f74.chunk.css.map",
+    "static/js/2.0f78814c.chunk.js.LICENSE.txt": "/senpai-comentarios-react/static/js/2.0f78814c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1adc113c.js",
+    "static/js/2.0f78814c.chunk.js",
+    "static/css/main.ca9f1f74.chunk.css",
+    "static/js/main.5e92efa7.chunk.js"
+  ]
+}
