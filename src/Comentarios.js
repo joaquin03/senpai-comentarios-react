@@ -1,5 +1,6 @@
 import "./Comentarios.css";
 import Comentario from "./Comentario";
+import Curso from "./Components/Curso";
 import React from "react";
 
 export default class Comentarios extends React.Component {
@@ -10,30 +11,37 @@ export default class Comentarios extends React.Component {
     this.state = {
       error: null,
       comentarios: [],
-      comentariosQ: [],
+      comentariosAux: [],
       texto: "",
       isLoaded: false,
-      q: ""
+      q: "",
+      cursos:[],
     };
   }
   componentDidMount() {
     this.obtenerComentarioAPI();
-  
+    this.obtenerCursosAPI();
   }
 
   buscar = (event) => {
 
     this.setState({ q: event.target.value });
-    let q = event.target.value;
-    let comentariosQAux = [];
-    for (let index=0; index<this.state.comentarios.length; index++) {
-      let comentario = this.state.comentarios[index];
-      if (comentario.texto.includes(q)) {
-        comentariosQAux.push(comentario);
-      }
-    }
-    this.setState({ comentariosQ: comentariosQAux });
 
+
+    let q = event.target.value;
+    let listaFiltrada = [];
+    //Por cada uno de los comentarios
+    this.state.comentarios.map(comentario =>{
+      
+      //Valido Que el texto tenga a "q" O que el titulo tenga a "q"
+      if (comentario.texto.toLowerCase().includes(q.toLowerCase()) ||
+        comentario.nombre.toLowerCase().includes(q.toLowerCase()) ) {
+        //Si se cumple lo agrego a la lista auxiliar 
+        listaFiltrada.push(comentario);
+      }
+    })
+
+    this.setState({ comentariosAux: listaFiltrada });
   }
 
 
@@ -46,8 +54,26 @@ export default class Comentarios extends React.Component {
         (result) => {
           this.setState({
             comentarios: result.data,
-            comentariosQ: result.data,
+            comentariosAux: result.data,
             texto: "",
+          });
+        },
+        //Error
+        (error) => {
+          alert("Error al obtener datos");
+        }
+      );
+  }
+
+  async obtenerCursosAPI()
+  {
+    fetch("http://165.22.191.161/api/joaquin/crusos")
+      .then(res => res.json())
+      .then(
+        //Todo OK
+        (result) => {
+          this.setState({
+            cursos: result.data,
           });
         },
         //Error
@@ -121,6 +147,11 @@ export default class Comentarios extends React.Component {
     return (
       <div>
         <div className="container bootstrap snippets bootdey">
+
+          {this.state.cursos.map((cursoInfo) => {
+              return <Curso item={cursoInfo}/>;
+          })}
+
           <div className="row">
             <div className="panel">
               <div className="cover-photo">
@@ -178,12 +209,17 @@ export default class Comentarios extends React.Component {
             </div>
 
             <div className="panel profile-info">
+            
               <input type="text" name="q" value={this.state.q} onChange={this.buscar}/>
             </div>
 
-            {this.state.comentariosQ.map((itemInfo) => {
+            {this.state.comentariosAux.map((itemInfo) => {
               return <Comentario item={itemInfo} />;
             })}
+
+           
+
+
           </div>
         </div>
       </div>
